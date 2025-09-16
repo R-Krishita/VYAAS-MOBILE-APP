@@ -40,7 +40,7 @@ export function LandingPage({ onAuthRequest }: LandingPageProps) {
       <div className="flex-1 p-6 overflow-y-auto">
         <div className="text-center mb-8">
           <h2 className="text-2xl font-bold text-foreground mb-2">Welcome to Vyaas</h2>
-          <p className="text-muted-foreground">Your smart farming companion</p>
+          <p className="text-muted-foreground">Your Smart Farming companion</p>
         </div>
 
         <div className="space-y-4 mb-8">
