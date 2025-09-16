@@ -1,0 +1,84 @@
+{
+  "common": {
+    "continue": "Continue",
+    "back": "Back",
+    "save": "Save",
+    "cancel": "Cancel",
+    "loading": "Loading...",
+    "error": "Error occurred"
+  },
+  "language": {
+    "title": "Choose Your Language",
+    "subtitle": "You can change this later in Profile",
+    "english": "English",
+    "hindi": "हिंदी",
+    "marathi": "मराठी",
+    "tamil": "தமிழ்"
+  },
+  "home": {
+    "title": "Smart Ayurvedic Crop Advisor",
+    "subtitle": "AI-powered farming guidance for better yields",
+    "cta": {
+      "collectData": "Collect Farm Data",
+      "getCrops": "Get Crop Recommendations"
+    },
+    "insights": {
+      "title": "Latest Insights",
+      "soilHealth": "Soil health analysis shows optimal pH levels",
+      "weatherAlert": "Monsoon expected in 2 weeks - prepare fields",
+      "marketTrend": "Tulsi prices increased by 15% this month"
+    },
+    "metrics": {
+      "farmSize": "Farm Size",
+      "soilType": "Soil Type",
+      "lastCrop": "Last Crop"
+    }
+  },
+  "dataCollection": {
+    "title": "Farm Data Collection",
+    "farmInfo": {
+      "title": "Farm Information",
+      "name": "Farm Name",
+      "location": "Location",
+      "address": "Address"
+    },
+    "landDetails": {
+      "title": "Land Details",
+      "size": "Farm Size (acres)",
+      "slope": "Land Slope",
+      "drainage": "Drainage Type"
+    },
+    "soilDetails": {
+      "title": "Soil Details",
+      "type": "Soil Type",
+      "ph": "Soil pH",
+      "nutrients": "Nutrient Level",
+      "moisture": "Moisture Content"
+    }
+  },
+  "recommendation": {
+    "title": "Crop Recommendations",
+    "top3": "Top 3 Recommended Ayurvedic Crops",
+    "suitability": "Suitability Score",
+    "duration": "Growth Duration",
+    "yield": "Expected Yield",
+    "profit": "Profit Estimate",
+    "marketInsights": "Market Insights",
+    "compareAll": "Compare these crops"
+  },
+  "market": {
+    "title": "Market Insights",
+    "price": "Current Price",
+    "yield": "Expected Yield",
+    "revenue": "Revenue",
+    "profit": "Profit Margin",
+    "trend": "Price Trend",
+    "personalizedPlan": "Get Personalized Plan",
+    "saveAsPdf": "Save as PDF"
+  },
+  "profile": {
+    "title": "Profile Settings",
+    "language": "Language",
+    "changeLanguage": "Change Language"
+  }
+}
