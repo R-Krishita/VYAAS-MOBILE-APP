@@ -17,6 +17,11 @@ export function OnboardingTour({ onComplete }: OnboardingTourProps) {
       placement: "top",
     },
     {
+      target: '[data-tour="data-collection-tab"]',
+      content: "Collect your farm data here",
+      placement: "top",
+    },
+    {
       target: '[data-tour="soil-health-tab"]',
       content: "Check your soil health",
       placement: "top",
