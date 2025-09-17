@@ -12,10 +12,9 @@ import { useAuth } from "@/components/auth-provider"
 
 interface HomeTabProps {
   onAuthClick?: () => void
-  onNavigateToTab?: (tab: string) => void
 }
 
-export function HomeTab({ onAuthClick, onNavigateToTab }: HomeTabProps) {
+export function HomeTab({ onAuthClick }: HomeTabProps) {
   const { t } = useTranslation()
   const { isAuthenticated } = useAuth()
   const [farmData, setFarmData] = useState<any>(null)
@@ -66,19 +65,12 @@ export function HomeTab({ onAuthClick, onNavigateToTab }: HomeTabProps) {
     return () => clearInterval(interval)
   }, [])
 
-  const handleFeatureClick = (action: string) => {
+  const handleFeatureClick = (tab: string) => {
     if (!isAuthenticated && onAuthClick) {
       onAuthClick()
       return
     }
-
-    if (onNavigateToTab) {
-      if (action === "data") {
-        onNavigateToTab("data-collection")
-      } else if (action === "crops") {
-        onNavigateToTab("crop-recommendation")
-      }
-    }
+    window.dispatchEvent(new CustomEvent("switchTab", { detail: tab }))
   }
 
   const dismissNotification = (id: number) => {
@@ -183,7 +175,7 @@ export function HomeTab({ onAuthClick, onNavigateToTab }: HomeTabProps) {
           {/* Quick Action Buttons */}
           <Button
             className="w-full h-16 text-lg font-semibold justify-start gap-4"
-            onClick={() => handleFeatureClick("data")}
+            onClick={() => handleFeatureClick("data-collection")}
           >
             <Database className="h-8 w-8" />
             <div className="text-left">
@@ -193,7 +185,7 @@ export function HomeTab({ onAuthClick, onNavigateToTab }: HomeTabProps) {
           </Button>
           <Button
             className="w-full h-16 text-lg font-semibold justify-start gap-4"
-            onClick={() => handleFeatureClick("crops")}
+            onClick={() => handleFeatureClick("crop-recommendation")}
           >
             <TrendingUp className="h-8 w-8" />
             <div className="text-left">
