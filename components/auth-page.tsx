@@ -67,7 +67,7 @@ export function AuthPage({ onAuthSuccess, onBack }: AuthPageProps) {
 
   return (
     <div className="flex flex-col h-full">
-      <Navbar />
+      <Navbar showAuthButton={false} />
 
       <div className="flex-1 p-6 overflow-y-auto">
         <div className="mb-6">

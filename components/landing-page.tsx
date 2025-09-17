@@ -35,7 +35,7 @@ export function LandingPage({ onAuthRequest }: LandingPageProps) {
 
   return (
     <div className="flex flex-col h-full">
-      <Navbar />
+      <Navbar onAuthClick={onAuthRequest} />
 
       <div className="flex-1 p-6 overflow-y-auto">
         <div className="text-center mb-8">
