@@ -22,7 +22,6 @@ export function AuthPage({ onAuthSuccess, onBack }: AuthPageProps) {
     lastName: "",
     address: "",
     phone: "",
-    password: "",
     otp: "",
   })
 
@@ -32,14 +31,14 @@ export function AuthPage({ onAuthSuccess, onBack }: AuthPageProps) {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault()
-    if (formData.phone && formData.password) {
+    if (formData.phone) {
       setMode("otp")
     }
   }
 
   const handleSignup = (e: React.FormEvent) => {
     e.preventDefault()
-    if (formData.firstName && formData.lastName && formData.address && formData.phone && formData.password) {
+    if (formData.firstName && formData.lastName && formData.address && formData.phone) {
       setMode("otp")
     }
   }
@@ -96,17 +95,7 @@ export function AuthPage({ onAuthSuccess, onBack }: AuthPageProps) {
                     required
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="loginPassword">Password</Label>
-                  <Input
-                    id="loginPassword"
-                    type="password"
-                    placeholder="Enter your password"
-                    value={formData.password}
-                    onChange={(e) => handleInputChange("password", e.target.value)}
-                    required
-                  />
-                </div>
+                
                 <Button type="submit" className="w-full">
                   Continue
                 </Button>
@@ -171,17 +160,7 @@ export function AuthPage({ onAuthSuccess, onBack }: AuthPageProps) {
                     required
                   />
                 </div>
-                <div className="space-y-2">
-                  <Label htmlFor="password">Password</Label>
-                  <Input
-                    id="password"
-                    type="password"
-                    placeholder="Create a password"
-                    value={formData.password}
-                    onChange={(e) => handleInputChange("password", e.target.value)}
-                    required
-                  />
-                </div>
+                
                 <Button type="submit" className="w-full">
                   Create Account
                 </Button>
