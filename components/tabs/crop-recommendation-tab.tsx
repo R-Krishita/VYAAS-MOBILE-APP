@@ -247,12 +247,9 @@ export function CropRecommendationTab({ onAuthClick, onNavigateToMarket }: CropR
 
       {/* Individual Crop Market Insights Modal */}
       <Dialog open={!!selectedCropForMarket} onOpenChange={() => setSelectedCropForMarket(null)}>
-        <DialogContent className="max-w-md">
-          <DialogHeader className="flex flex-row items-center justify-between">
+        <DialogContent className="w-[95vw] max-w-[380px] max-h-[85vh] mx-auto overflow-hidden flex flex-col">
+          <DialogHeader className="flex-shrink-0">
             <DialogTitle>{selectedCropForMarket?.name} Market Info</DialogTitle>
-            <Button variant="ghost" size="icon" onClick={() => setSelectedCropForMarket(null)}>
-              <X className="h-4 w-4" />
-            </Button>
           </DialogHeader>
           {selectedCropForMarket && (
             <div className="space-y-4">

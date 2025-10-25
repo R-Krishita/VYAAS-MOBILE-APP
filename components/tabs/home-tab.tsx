@@ -287,14 +287,11 @@ export function HomeTab({ onAuthClick }: HomeTabProps) {
       </div>
 
       <Dialog open={showNotifications} onOpenChange={setShowNotifications}>
-        <DialogContent className="max-w-full h-full m-0 rounded-none">
-          <DialogHeader className="flex flex-row items-center justify-between">
+        <DialogContent className="w-[95vw] max-w-[380px] max-h-[85vh] mx-auto overflow-hidden flex flex-col">
+          <DialogHeader className="flex-shrink-0">
             <DialogTitle>Notifications</DialogTitle>
-            <Button variant="ghost" size="icon" onClick={() => setShowNotifications(false)}>
-              <X className="h-4 w-4" />
-            </Button>
           </DialogHeader>
-          <div className="flex-1 overflow-y-auto space-y-3">
+          <div className="flex-1 overflow-y-auto space-y-3 pr-2">
             {notifications
               .filter((n) => !n.dismissed)
               .map((notification) => (

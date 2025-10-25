@@ -703,7 +703,7 @@ export function DataCollectionTab({ onAuthClick }: DataCollectionTabProps) {
       </Card>
 
       {/* Action Buttons */}
-      <div className="flex gap-3 sticky bottom-6 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 p-4 -mx-6 -mb-6 border-t">
+      <div className="flex gap-3 pt-2">
         <Button 
           variant="outline" 
           className="flex-1"
