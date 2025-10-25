@@ -54,26 +54,47 @@ const translations = {
     helpSupport: "सहायता और समर्थन",
     signOut: "साइन आउट",
   },
-  or: {
-    profile: "ପ୍ରୋଫାଇଲ୍",
-    manageAccount: "ଆପଣଙ୍କ ଖାତା ଏବଂ ପସନ୍ଦ ପରିଚାଳନା କରନ୍ତୁ",
-    farmerSince: "2015 ରୁ କୃଷକ",
-    verified: "ଯାଞ୍ଚିତ",
-    farmDetails: "ଚାଷ ବିବରଣୀ",
-    farmInfo: "ଆପଣଙ୍କର ପଞ୍ଜୀକୃତ ଚାଷ ସୂଚନା",
-    totalArea: "ମୋଟ କ୍ଷେତ୍ର",
-    soilType: "ମାଟି ପ୍ରକାର",
-    primaryCrops: "ମୁଖ୍ୟ ଫସଲ",
-    irrigation: "ଜଳସେଚନ",
-    achievements: "ସଫଳତା",
-    soilHealthChampion: "ମାଟି ସ୍ୱାସ୍ଥ୍ୟ ଚାମ୍ପିଅନ୍",
-    soilHealthDesc: "6 ମାସ ପାଇଁ 85%+ ମାଟି ସ୍ୱାସ୍ଥ୍ୟ ବଜାୟ ରଖିଛନ୍ତି",
-    smartFarmer: "ସ୍ମାର୍ଟ କୃଷକ",
-    smartFarmerDesc: "10+ ସୁପାରିଶ ସଫଳତାର ସହିତ ବ୍ୟବହାର କରିଛନ୍ତି",
-    language: "ଭାଷା",
-    settings: "ସେଟିଂସ୍",
-    helpSupport: "ସହାୟତା ଏବଂ ସମର୍ଥନ",
-    signOut: "ସାଇନ୍ ଆଉଟ୍",
+  mr: {
+    profile: "प्रोफाइल",
+    manageAccount: "तुमचे खाते आणि प्राधान्ये व्यवस्थापित करा",
+    farmerSince: "2015 पासून शेतकरी",
+    verified: "सत्यापित",
+    farmDetails: "शेत तपशील",
+    farmInfo: "तुमची नोंदणीकृत शेत माहिती",
+    totalArea: "एकूण क्षेत्र",
+    soilType: "माती प्रकार",
+    primaryCrops: "प्राथमिक पिके",
+    irrigation: "सिंचन",
+    achievements: "उपलब्धी",
+    soilHealthChampion: "माती आरोग्य चॅम्पियन",
+    soilHealthDesc: "6 महिने 85%+ माती आरोग्य राखले",
+    smartFarmer: "स्मार्ट शेतकरी",
+    smartFarmerDesc: "10+ शिफारसी यशस्वीपणे वापरल्या",
+    language: "भाषा",
+    settings: "सेटिंग्ज",
+    helpSupport: "मदत आणि समर्थन",
+    signOut: "साइन आउट",
+  },
+  ta: {
+    profile: "சுயவிவரம்",
+    manageAccount: "உங்கள் கணக்கு மற்றும் விருப்பங்களை நிர்வகிக்கவும்",
+    farmerSince: "2015 முதல் விவசாயி",
+    verified: "சரிபார்க்கப்பட்டது",
+    farmDetails: "பண்ணை விவரங்கள்",
+    farmInfo: "உங்கள் பதிவு செய்யப்பட்ட பண்ணை தகவல்",
+    totalArea: "மொத்த பரப்பளவு",
+    soilType: "மண் வகை",
+    primaryCrops: "முதன்மை பயிர்கள்",
+    irrigation: "பாசனம்",
+    achievements: "சாதனைகள்",
+    soilHealthChampion: "மண் ஆரோக்கிய சாம்பியன்",
+    soilHealthDesc: "6 மாதங்களுக்கு 85%+ மண் ஆரோக்கியத்தை பராமரித்தது",
+    smartFarmer: "ஸ்மார்ட் விவசாயி",
+    smartFarmerDesc: "10+ பரிந்துரைகளை வெற்றிகரமாக பயன்படுத்தியது",
+    language: "மொழி",
+    settings: "அமைப்புகள்",
+    helpSupport: "உதவி & ஆதரவு",
+    signOut: "வெளியேறு",
   },
 }
 
@@ -250,14 +271,27 @@ export function ProfileTab() {
                 </p>
               </div>
             </div>
-            <Select value={language} onValueChange={setLanguage}>
+            <Select 
+              value={language} 
+              onValueChange={(value) => {
+                setLanguage(value)
+                const langNames: Record<string, string> = {
+                  en: "English",
+                  hi: "हिंदी",
+                  mr: "मराठी",
+                  ta: "தமிழ்"
+                }
+                toast.success(`Language changed to ${langNames[value]}`)
+              }}
+            >
               <SelectTrigger className="w-32">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="en">English</SelectItem>
                 <SelectItem value="hi">हिंदी</SelectItem>
-                <SelectItem value="or">ଓଡ଼ିଆ</SelectItem>
+                <SelectItem value="mr">मराठी</SelectItem>
+                <SelectItem value="ta">தமிழ்</SelectItem>
               </SelectContent>
             </Select>
           </div>

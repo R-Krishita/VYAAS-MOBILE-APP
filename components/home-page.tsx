@@ -11,7 +11,8 @@ import { ProfileTab } from "@/components/tabs/profile-tab"
 import { Button } from "@/components/ui/button"
 import { useAuth } from "@/components/auth-provider"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Info, X } from "lucide-react"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog"
+import { Info, X, MessageCircle, Sparkles } from "lucide-react"
 
 export type TabType = "home" | "data-collection" | "crop-recommendation" | "market-insights" | "profile"
 
@@ -24,6 +25,7 @@ export function HomePage({ onAuthClick }: HomePageProps) {
   const { isAuthenticated } = useAuth()
   const [isDemoMode, setIsDemoMode] = useState(false)
   const [showDemoBanner, setShowDemoBanner] = useState(false)
+  const [showChatbotDialog, setShowChatbotDialog] = useState(false)
 
   useEffect(() => {
     // Check if in demo mode
@@ -87,7 +89,20 @@ export function HomePage({ onAuthClick }: HomePageProps) {
         </Alert>
       )}
       
-      <div className="flex-1 overflow-y-auto pb-20">{renderActiveTab()}</div>
+      <div className="flex-1 overflow-y-auto pb-20 relative">{renderActiveTab()}</div>
+
+      {/* AI Chatbot Floating Button - positioned within app container */}
+      {isAuthenticated && (
+        <div className="absolute bottom-[88px] right-4 z-40">
+          <Button
+            onClick={() => setShowChatbotDialog(true)}
+            className="h-14 w-14 rounded-full shadow-lg bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white border-2 border-white dark:border-gray-800"
+            size="icon"
+          >
+            <MessageCircle className="h-6 w-6" />
+          </Button>
+        </div>
+      )}
 
       {isAuthenticated && <BottomNavigation activeTab={activeTab} onTabChange={setActiveTab} />}
 
@@ -102,6 +117,62 @@ export function HomePage({ onAuthClick }: HomePageProps) {
           </Button>
         </div>
       )}
+
+      {/* Chatbot Coming Soon Dialog */}
+      <Dialog open={showChatbotDialog} onOpenChange={setShowChatbotDialog}>
+        <DialogContent className="w-[95vw] max-w-[380px] mx-auto">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <div className="h-10 w-10 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                <MessageCircle className="h-5 w-5 text-white" />
+              </div>
+              AI Farm Assistant
+            </DialogTitle>
+            <DialogDescription>
+              Your intelligent farming companion
+            </DialogDescription>
+          </DialogHeader>
+          <div className="py-6">
+            <div className="text-center space-y-4">
+              <div className="mx-auto h-20 w-20 rounded-full bg-gradient-to-r from-purple-100 to-pink-100 dark:from-purple-950 dark:to-pink-950 flex items-center justify-center">
+                <Sparkles className="h-10 w-10 text-purple-600 dark:text-purple-400" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold mb-2">Coming Soon!</h3>
+                <p className="text-sm text-muted-foreground">
+                  Our AI-powered chatbot will help you with:
+                </p>
+              </div>
+              <ul className="text-sm text-left space-y-2 max-w-xs mx-auto">
+                <li className="flex items-start gap-2">
+                  <span className="text-purple-600 dark:text-purple-400">✓</span>
+                  <span>Instant answers to farming questions</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-purple-600 dark:text-purple-400">✓</span>
+                  <span>Personalized crop recommendations</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-purple-600 dark:text-purple-400">✓</span>
+                  <span>Weather alerts and pest warnings</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-purple-600 dark:text-purple-400">✓</span>
+                  <span>Market price updates</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="flex gap-2">
+            <Button
+              onClick={() => setShowChatbotDialog(false)}
+              className="flex-1"
+            >
+              Got it!
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   )
 }

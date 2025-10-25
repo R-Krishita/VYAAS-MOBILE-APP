@@ -1,6 +1,7 @@
 "use client"
 
-import { createContext, useContext, useState, type ReactNode } from "react"
+import { createContext, useContext, useState, useEffect, type ReactNode } from "react"
+import i18n from "./i18n-provider"
 
 interface AuthContextType {
   isAuthenticated: boolean
@@ -18,7 +19,22 @@ interface AuthProviderProps {
 }
 
 export function AuthProvider({ children, isAuthenticated, onSignOut }: AuthProviderProps) {
-  const [language, setLanguage] = useState("en")
+  const [language, setLanguageState] = useState("en")
+
+  const setLanguage = (lang: string) => {
+    setLanguageState(lang)
+    // Update i18n language when language changes
+    if (typeof window !== 'undefined' && i18n.isInitialized) {
+      i18n.changeLanguage(lang)
+    }
+  }
+
+  useEffect(() => {
+    // Initialize i18n language on mount
+    if (typeof window !== 'undefined' && i18n.isInitialized) {
+      i18n.changeLanguage(language)
+    }
+  }, [])
 
   const signOut = () => {
     onSignOut()
