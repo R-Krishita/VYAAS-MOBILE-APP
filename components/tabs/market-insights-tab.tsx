@@ -29,7 +29,7 @@ export function MarketInsightsTab({ onAuthClick }: MarketInsightsTabProps) {
 
   useEffect(() => {
     const savedPlans = localStorage.getItem("vyaas_saved_plans")
-    let recommendedCrops = ["Tulsi", "Ashwagandha", "Aloe Vera"]
+    let recommendedCrops = ["Mustard", "Soybean", "Sunflower"]
 
     if (savedPlans) {
       try {
@@ -84,78 +84,78 @@ export function MarketInsightsTab({ onAuthClick }: MarketInsightsTabProps) {
 
   const generatePersonalizedPlan = (cropName: string) => {
     const plans = {
-      Tulsi: [
+      Mustard: [
         {
           step: 1,
           title: "Soil Preparation",
-          description: "Add organic compost & vermicompost. Ensure well-drained soil with pH 6.0-7.5",
+          description: "Ensure well-drained, loam to sandy loam soil. pH 6.5-7.5. Plow 2-3 times.",
           icon: "🌱",
           timeline: "Week 1-2",
         },
         {
           step: 2,
           title: "Sowing Window",
-          description: "Plant during March-April or June-July. Spacing: 30cm x 30cm between plants",
-          icon: "🌿",
-          timeline: "Week 3",
-        },
-        {
-          step: 3,
-          title: "Care & Maintenance",
-          description: "Water twice weekly. Watch for aphids & whiteflies. Harvest leaves after 90 days",
-          icon: "💧",
-          timeline: "Week 4-12",
-        },
-      ],
-      Ashwagandha: [
-        {
-          step: 1,
-          title: "Soil Preparation",
-          description: "Prepare well-drained sandy loam soil. Add farmyard manure 10-15 tons/hectare",
-          icon: "🌱",
-          timeline: "Week 1-2",
-        },
-        {
-          step: 2,
-          title: "Sowing Window",
-          description: "Sow seeds in June-July. Row spacing: 30cm, plant spacing: 10cm",
+          description: "Sow seeds from late September to October. Spacing: 30cm x 10cm.",
           icon: "🌿",
           timeline: "Week 3",
         },
         {
           step: 3,
           title: "Irrigation & Care",
-          description: "Light irrigation weekly. Harvest roots after 150-180 days. Watch for root rot",
+          description: "Requires 2-3 irrigations at critical stages. Monitor for aphids.",
           icon: "💧",
-          timeline: "Week 4-24",
+          timeline: "Week 4-16",
         },
       ],
-      "Aloe Vera": [
+      Soybean: [
         {
           step: 1,
           title: "Soil Preparation",
-          description: "Ensure excellent drainage. Mix sand with garden soil. pH should be 6.0-8.0",
+          description: "Prefers loam or clay loam soil. Ensure good drainage. pH 6.0-7.0.",
+          icon: "🌱",
+          timeline: "Week 1-2",
+        },
+        {
+          step: 2,
+          title: "Sowing Window",
+          description: "Sow during the Kharif season (June-July). Use a seed drill for uniform spacing.",
+          icon: "🌿",
+          timeline: "Week 3",
+        },
+        {
+          step: 3,
+          title: "Weed & Pest Management",
+          description: "Critical in the first 30-45 days. Watch for girdle beetle and leaf miners.",
+          icon: "💧",
+          timeline: "Week 4-15",
+        },
+      ],
+      Sunflower: [
+        {
+          step: 1,
+          title: "Soil Preparation",
+          description: "Grows in a wide range of soils, but prefers sandy loam. Good drainage is key.",
           icon: "🌱",
           timeline: "Week 1-2",
         },
         {
           step: 2,
           title: "Planting",
-          description: "Plant suckers in February-March. Spacing: 60cm x 60cm for commercial cultivation",
+          description: "Can be sown in both Kharif and Rabi seasons. Spacing: 60cm x 30cm.",
           icon: "🌿",
           timeline: "Week 3",
         },
         {
           step: 3,
-          title: "Maintenance",
-          description: "Minimal watering needed. Harvest mature leaves after 8-10 months. Remove weeds regularly",
+          title: "Irrigation & Harvest",
+          description: "Requires irrigation at flowering stage. Harvest when the back of the head turns yellow.",
           icon: "💧",
-          timeline: "Week 4-32",
+          timeline: "Week 4-14",
         },
       ],
     }
 
-    return plans[cropName as keyof typeof plans] || plans["Tulsi"]
+    return plans[cropName as keyof typeof plans] || plans["Mustard"]
   }
 
   const handleGetPersonalizedPlan = () => {

@@ -3,13 +3,15 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Navbar } from "@/components/navbar"
-import { Leaf, TrendingUp, MapPin, User } from "lucide-react"
+import { Leaf, TrendingUp, MapPin, User, Play } from "lucide-react"
+import { toast } from "sonner"
 
 interface LandingPageProps {
   onAuthRequest: () => void
+  onDemoMode?: () => void
 }
 
-export function LandingPage({ onAuthRequest }: LandingPageProps) {
+export function LandingPage({ onAuthRequest, onDemoMode }: LandingPageProps) {
   const features = [
     {
       icon: Leaf,
@@ -32,6 +34,26 @@ export function LandingPage({ onAuthRequest }: LandingPageProps) {
       description: "Manage your farm details and preferences",
     },
   ]
+
+  const handleDemoMode = () => {
+    // Pre-populate demo data
+    const demoData = {
+      farmName: "Demo Farm - Rajasthan",
+      location: "Jaipur, Rajasthan",
+      farmSize: "5",
+      soilType: "loamy",
+      soilPH: "6.8",
+      cropType: "mustard",
+      irrigationType: "drip",
+      isDemoMode: true
+    }
+    localStorage.setItem("farmData", JSON.stringify(demoData))
+    toast.success("Demo mode activated! Exploring with sample data.")
+    
+    if (onDemoMode) {
+      onDemoMode()
+    }
+  }
 
   return (
     <div className="flex flex-col h-full">
@@ -68,7 +90,18 @@ export function LandingPage({ onAuthRequest }: LandingPageProps) {
           <Button onClick={onAuthRequest} className="w-full" size="lg">
             Get Started
           </Button>
-          <p className="text-center text-sm text-muted-foreground">Sign up to unlock all features</p>
+          <Button 
+            onClick={handleDemoMode} 
+            variant="outline" 
+            className="w-full" 
+            size="lg"
+          >
+            <Play className="h-4 w-4 mr-2" />
+            Try Demo
+          </Button>
+          <p className="text-center text-sm text-muted-foreground">
+            Sign up for full access or try demo mode
+          </p>
         </div>
       </div>
     </div>

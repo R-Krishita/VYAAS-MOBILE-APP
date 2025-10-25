@@ -6,6 +6,8 @@ import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { Suspense } from "react"
 import { I18nProvider } from "@/components/i18n-provider"
+import { Toaster } from "@/components/ui/sonner"
+import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata: Metadata = {
   title: "Smart Ayurvedic Crop Advisor",
@@ -19,11 +21,19 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
-        <I18nProvider>
-          <Suspense fallback={null}>{children}</Suspense>
-        </I18nProvider>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <I18nProvider>
+            <Suspense fallback={null}>{children}</Suspense>
+          </I18nProvider>
+          <Toaster position="bottom-right" />
+        </ThemeProvider>
         <Analytics />
       </body>
     </html>

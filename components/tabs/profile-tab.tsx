@@ -4,8 +4,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { User, MapPin, Phone, Mail, Settings, HelpCircle, LogOut, Award, Globe } from "lucide-react"
+import { Switch } from "@/components/ui/switch"
+import { Label } from "@/components/ui/label"
+import { User, MapPin, Phone, Mail, Settings, HelpCircle, LogOut, Award, Globe, Moon, Sun } from "lucide-react"
 import { useAuth } from "@/components/auth-provider"
+import { useTheme } from "next-themes"
+import { toast } from "sonner"
 
 const translations = {
   en: {
@@ -75,6 +79,7 @@ const translations = {
 
 export function ProfileTab() {
   const { language, setLanguage, signOut } = useAuth()
+  const { theme, setTheme } = useTheme()
   const t = translations[language as keyof typeof translations] || translations.en
 
   return (
@@ -196,12 +201,71 @@ export function ProfileTab() {
         </CardContent>
       </Card>
 
+      {/* Settings Section */}
+      <Card>
+        <CardHeader>
+          <CardTitle className="flex items-center gap-2">
+            <Settings className="h-5 w-5" />
+            Settings
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          {/* Dark Mode Toggle */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              {theme === "dark" ? (
+                <Moon className="h-5 w-5 text-primary" />
+              ) : (
+                <Sun className="h-5 w-5 text-primary" />
+              )}
+              <div>
+                <Label htmlFor="dark-mode" className="text-sm font-medium cursor-pointer">
+                  Dark Mode
+                </Label>
+                <p className="text-xs text-muted-foreground">
+                  {theme === "dark" ? "Enabled" : "Disabled"}
+                </p>
+              </div>
+            </div>
+            <Switch
+              id="dark-mode"
+              checked={theme === "dark"}
+              onCheckedChange={(checked) => {
+                setTheme(checked ? "dark" : "light")
+                toast.success(`${checked ? "Dark" : "Light"} mode activated`)
+              }}
+            />
+          </div>
+
+          {/* Language Selector */}
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <Globe className="h-5 w-5 text-primary" />
+              <div>
+                <Label className="text-sm font-medium">
+                  {t.language}
+                </Label>
+                <p className="text-xs text-muted-foreground">
+                  Choose your preferred language
+                </p>
+              </div>
+            </div>
+            <Select value={language} onValueChange={setLanguage}>
+              <SelectTrigger className="w-32">
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="en">English</SelectItem>
+                <SelectItem value="hi">हिंदी</SelectItem>
+                <SelectItem value="or">ଓଡ଼ିଆ</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+        </CardContent>
+      </Card>
+
       {/* Menu Options */}
       <div className="space-y-3">
-        <Button variant="outline" className="w-full justify-start bg-transparent" size="lg">
-          <Settings className="h-4 w-4 mr-3" />
-          {t.settings}
-        </Button>
         <Button variant="outline" className="w-full justify-start bg-transparent" size="lg">
           <HelpCircle className="h-4 w-4 mr-3" />
           {t.helpSupport}
@@ -210,7 +274,10 @@ export function ProfileTab() {
           variant="outline"
           className="w-full justify-start text-red-600 hover:text-red-700 bg-transparent"
           size="lg"
-          onClick={signOut}
+          onClick={() => {
+            signOut()
+            toast.info("Signed out successfully")
+          }}
         >
           <LogOut className="h-4 w-4 mr-3" />
           {t.signOut}

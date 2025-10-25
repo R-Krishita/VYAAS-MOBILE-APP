@@ -9,6 +9,7 @@ import { Progress } from "@/components/ui/progress"
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog"
 import { TrendingUp, Droplets, Thermometer, Sun, Database, Bell, X, ChevronLeft, ChevronRight } from "lucide-react"
 import { useAuth } from "@/components/auth-provider"
+import { WeatherWidget } from "@/components/weather-widget"
 
 interface HomeTabProps {
   onAuthClick?: () => void
@@ -23,31 +24,31 @@ export function HomeTab({ onAuthClick }: HomeTabProps) {
 
   const actionableInsights = [
     {
-      title: "Soil pH Low",
-      action: "Add lime to increase pH",
-      image: "/soil-testing-lime-application.jpg",
+      title: "Optimal Sowing Window",
+      action: "Plant Mustard now for best yield",
+      image: "/tulsi-holy-basil-planting-season.jpg", // Using available planting season image
       priority: "high",
     },
     {
-      title: "Tulsi Perfect Season",
-      action: "Plant now for best yield",
-      image: "/tulsi-holy-basil-planting-season.jpg",
+      title: "Market Price Rising",
+      action: "Soybean demand up 12% this week",
+      image: "/market_price_soybean_home.png", // Using existing soybean market chart
       priority: "medium",
     },
     {
-      title: "Market Price Rising",
-      action: "Ashwagandha demand up 15%",
-      image: "/ashwagandha-market-price-chart.jpg",
+      title: "Pest Alert",
+      action: "Aphids detected in nearby regions, monitor your crops",
+      image: "/placeholder.svg", // Generic placeholder for pest alert
       priority: "low",
     },
   ]
 
   const archivedNotifications = [
     { id: 1, message: t("home.insights.soilHealth"), time: "2 hours ago", dismissed: false },
-    { id: 2, message: "Tulsi fits your soil this season", time: "1 day ago", dismissed: false },
+    { id: 2, message: "Mustard fits your soil this season", time: "1 day ago", dismissed: false },
     { id: 3, message: t("home.insights.marketTrend"), time: "2 days ago", dismissed: false },
     { id: 4, message: t("home.insights.weatherAlert"), time: "3 days ago", dismissed: false },
-    { id: 5, message: "Harvest reminder: Aloe Vera ready", time: "1 week ago", dismissed: false },
+    { id: 5, message: "Harvest reminder: Soybean is approaching maturity", time: "1 week ago", dismissed: false },
   ]
 
   const [notifications, setNotifications] = useState(archivedNotifications)
@@ -196,34 +197,9 @@ export function HomeTab({ onAuthClick }: HomeTabProps) {
         </div>
       </div>
 
-      {/* Weather Card */}
+      {/* Weather Widget */}
       <div className="px-4">
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="flex items-center gap-2">
-              <Sun className="h-5 w-5 text-secondary" />
-              Today's weather
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="flex justify-between items-center">
-              <div>
-                <p className="text-2xl font-bold">28°C</p>
-                <p className="text-sm text-muted-foreground">Partly Cloudy</p>
-              </div>
-              <div className="text-right space-y-1">
-                <div className="flex items-center gap-2 text-sm">
-                  <Droplets className="h-4 w-4 text-blue-500" />
-                  <span>65% Humidity</span>
-                </div>
-                <div className="flex items-center gap-2 text-sm">
-                  <Thermometer className="h-4 w-4 text-red-500" />
-                  <span>22°C - 30°C</span>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+        <WeatherWidget />
       </div>
 
       {/* Farm Health Overview */}
@@ -301,7 +277,7 @@ export function HomeTab({ onAuthClick }: HomeTabProps) {
               <div className="flex items-center gap-3">
                 <div className="w-2 h-2 bg-muted-foreground rounded-full"></div>
                 <div className="flex-1">
-                  <p className="text-sm font-medium">Market Price Alert : Wheat</p>
+                  <p className="text-sm font-medium">Market Price Alert : Soybean</p>
                   <p className="text-xs text-muted-foreground">2 days ago</p>
                 </div>
               </div>

@@ -32,7 +32,7 @@ export function BottomNavigation({ activeTab, onTabChange }: BottomNavigationPro
               size="sm"
               onClick={() => onTabChange(tab.id)}
               className={`flex flex-col items-center gap-1 h-auto py-2 px-3 ${
-                isActive ? "text-primary" : "text-muted-foreground"
+                isActive ? "text-primary" : "text-muted-foreground hover:bg-muted"
               }`}
               data-tour={`${tab.id}-tab`}
             >

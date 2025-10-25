@@ -4,75 +4,75 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated design tokens for Vyaas agricultural app theme */
-  --background: #ffffff;
-  --foreground: #4b5563;
-  --card: #f9fafb;
-  --card-foreground: #4b5563;
+  /* New theme: Subtle blues, greens, and earthy tones */
+  --background: #f8fafc;      /* Very light cool gray */
+  --foreground: #1f2937;      /* Dark slate gray */
+  --card: #ffffff;            /* White */
+  --card-foreground: #1f2937;
   --popover: #ffffff;
-  --popover-foreground: #4b5563;
-  --primary: #0891b2;
+  --popover-foreground: #1f2937;
+  --primary: #3b82f6;          /* Calm, medium blue */
   --primary-foreground: #ffffff;
-  --secondary: #f59e0b;
-  --secondary-foreground: #ffffff;
-  --muted: #ecfeff;
-  --muted-foreground: #4b5563;
-  --accent: #f59e0b;
-  --accent-foreground: #4b5563;
-  --destructive: #dc2626;
+  --secondary: #84a98c;        /* Muted sage green */
+  --secondary-foreground: #1f2937;
+  --muted: #f1f5f9;            /* Light cool gray */
+  --muted-foreground: #64748b;
+  --accent: #fde68a;           /* Soft, buttery yellow */
+  --accent-foreground: #4d411d;
+  --destructive: #ef4444;
   --destructive-foreground: #ffffff;
-  --border: #e5e7eb;
-  --input: #f9fafb;
-  --ring: #0891b2;
-  --chart-1: #164e63;
-  --chart-2: #0891b2;
-  --chart-3: #dc2626;
-  --chart-4: #f59e0b;
-  --chart-5: #4b5563;
+  --border: #e2e8f0;          /* Slightly darker cool gray */
+  --input: #ffffff;
+  --ring: #3b82f6;             /* Calm, medium blue */
+  --chart-1: #3b82f6;          /* Blue */
+  --chart-2: #84a98c;          /* Green */
+  --chart-3: #fde68a;          /* Yellow */
+  --chart-4: #94a3b8;          /* Gray */
+  --chart-5: #64748b;
   --radius: 0.5rem;
-  --sidebar: #f9fafb;
-  --sidebar-foreground: #4b5563;
-  --sidebar-primary: #0891b2;
+  --sidebar: #f8fafc;
+  --sidebar-foreground: #1f2937;
+  --sidebar-primary: #3b82f6;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f59e0b;
-  --sidebar-accent-foreground: #4b5563;
-  --sidebar-border: #e5e7eb;
-  --sidebar-ring: #0891b2;
+  --sidebar-accent: #84a98c;
+  --sidebar-accent-foreground: #1f2937;
+  --sidebar-border: #e2e8f0;
+  --sidebar-ring: #3b82f6;
 }
 
 .dark {
-  --background: #0f172a;
-  --foreground: #f1f5f9;
-  --card: #1e293b;
-  --card-foreground: #f1f5f9;
-  --popover: #1e293b;
-  --popover-foreground: #f1f5f9;
-  --primary: #0891b2;
-  --primary-foreground: #ffffff;
-  --secondary: #f59e0b;
-  --secondary-foreground: #ffffff;
-  --muted: #334155;
-  --muted-foreground: #94a3b8;
-  --accent: #f59e0b;
-  --accent-foreground: #0f172a;
-  --destructive: #dc2626;
-  --destructive-foreground: #ffffff;
-  --border: #334155;
-  --input: #1e293b;
-  --ring: #0891b2;
-  --chart-1: #164e63;
-  --chart-2: #0891b2;
-  --chart-3: #dc2626;
-  --chart-4: #f59e0b;
-  --chart-5: #94a3b8;
-  --sidebar: #1e293b;
-  --sidebar-foreground: #f1f5f9;
-  --sidebar-primary: #0891b2;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f59e0b;
-  --sidebar-accent-foreground: #0f172a;
-  --sidebar-border: #334155;
-  --sidebar-ring: #0891b2;
+  --background: #111827;      /* Very dark blue-gray */
+  --foreground: #e5e7eb;      /* Light gray */
+  --card: #1f2937;            /* Dark slate gray */
+  --card-foreground: #e5e7eb;
+  --popover: #111827;
+  --popover-foreground: #e5e7eb;
+  --primary: #60a5fa;          /* Brighter blue for dark mode */
+  --primary-foreground: #111827;
+  --secondary: #a3bfa8;        /* Lighter sage green */
+  --secondary-foreground: #1f2937;
+  --muted: #374151;            /* Medium-dark gray */
+  --muted-foreground: #9ca3af;
+  --accent: #fde68a;           /* Soft yellow */
+  --accent-foreground: #4d411d;
+  --destructive: #f87171;
+  --destructive-foreground: #1f2937;
+  --border: #374151;
+  --input: #1f2937;
+  --ring: #60a5fa;
+  --chart-1: #60a5fa;          /* Blue */
+  --chart-2: #a3bfa8;          /* Green */
+  --chart-3: #fde68a;          /* Yellow */
+  --chart-4: #9ca3af;          /* Gray */
+  --chart-5: #6b7280;
+  --sidebar: #1f2937;
+  --sidebar-foreground: #e5e7eb;
+  --sidebar-primary: #60a5fa;
+  --sidebar-primary-foreground: #111827;
+  --sidebar-accent: #a3bfa8;
+  --sidebar-accent-foreground: #1f2937;
+  --sidebar-border: #374151;
+  --sidebar-ring: #60a5fa;
 }
 
 @theme inline {

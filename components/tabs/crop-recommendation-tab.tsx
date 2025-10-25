@@ -42,51 +42,51 @@ export function CropRecommendationTab({ onAuthClick, onNavigateToMarket }: CropR
   }, [])
 
   const generateRecommendations = (data: any) => {
-    const ayurvedicCrops = [
+    const oilseedCrops = [
       {
-        id: "tulsi",
-        name: "Tulsi (Holy Basil)",
-        image: "/tulsi-holy-basil-plant.jpg",
-        baseYield: [600, 800],
-        baseProfit: [45000, 65000],
-        growthDuration: [90, 120],
+        id: "mustard",
+        name: "Mustard",
+        image: "/placeholder.svg", // Generic placeholder for mustard plant
+        baseYield: [800, 1200],
+        baseProfit: [60000, 80000],
+        growthDuration: [110, 130],
         suitableFor: ["Loam", "Sandy Loam"],
-        reasons: ["Soil pH matches", "Low water requirement", "High market demand"],
+        reasons: ["Cool climate crop", "Good market price", "Disease resistant"],
       },
       {
-        id: "ashwagandha",
-        name: "Ashwagandha",
-        image: "/ashwagandha-medicinal-plant.jpg",
-        baseYield: [400, 600],
-        baseProfit: [50000, 70000],
-        growthDuration: [150, 180],
-        suitableFor: ["Loam", "Sandy"],
-        reasons: ["Drought tolerant", "Premium pricing", "Export potential"],
+        id: "soybean",
+        name: "Soybean",
+        image: "/placeholder.svg", // Generic placeholder for soybean plant
+        baseYield: [1500, 2000],
+        baseProfit: [70000, 90000],
+        growthDuration: [100, 120],
+        suitableFor: ["Clay", "Loam"],
+        reasons: ["High protein content", "Nitrogen fixation", "Versatile use"],
       },
       {
-        id: "aloe-vera",
-        name: "Aloe Vera",
-        image: "/aloe-vera-succulent-plant.jpg",
-        baseYield: [800, 1000],
-        baseProfit: [35000, 55000],
-        growthDuration: [180, 240],
-        suitableFor: ["Clay", "Loam", "Sandy"],
-        reasons: ["Low maintenance", "Multiple harvests", "Cosmetic industry demand"],
+        id: "sunflower",
+        name: "Sunflower",
+        image: "/placeholder.svg", // Generic placeholder for sunflower plant
+        baseYield: [1000, 1500],
+        baseProfit: [55000, 75000],
+        growthDuration: [90, 100],
+        suitableFor: ["Sandy", "Loam"],
+        reasons: ["Drought tolerant", "Attracts pollinators", "High oil yield"],
       },
     ]
 
     let selectedCrops: any[] = []
 
     if (data.soilType === "Loam") {
-      selectedCrops = ayurvedicCrops.filter((crop) => ["tulsi", "ashwagandha", "aloe-vera"].includes(crop.id))
+      selectedCrops = oilseedCrops.filter((crop) => ["mustard", "soybean", "sunflower"].includes(crop.id))
     } else if (data.soilType === "Clay") {
-      selectedCrops = ayurvedicCrops.filter((crop) => ["aloe-vera", "shatavari", "brahmi"].includes(crop.id))
+      selectedCrops = oilseedCrops.filter((crop) => ["soybean"].includes(crop.id))
     } else {
-      selectedCrops = ayurvedicCrops.sort(() => Math.random() - 0.5).slice(0, 3)
+      selectedCrops = oilseedCrops.sort(() => Math.random() - 0.5).slice(0, 3)
     }
 
     if (selectedCrops.length < 3) {
-      const remaining = ayurvedicCrops.filter((crop) => !selectedCrops.find((selected) => selected.id === crop.id))
+      const remaining = oilseedCrops.filter((crop) => !selectedCrops.find((selected) => selected.id === crop.id))
       selectedCrops = [...selectedCrops, ...remaining].slice(0, 3)
     }
 

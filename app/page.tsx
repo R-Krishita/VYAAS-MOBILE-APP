@@ -19,6 +19,12 @@ export default function App() {
     setShowOnboarding(true)
   }
 
+  const handleDemoMode = () => {
+    setIsAuthenticated(true)
+    setCurrentPage("home")
+    setShowOnboarding(false)
+  }
+
   const handleAuthRequest = () => {
     setCurrentPage("auth")
   }
@@ -39,7 +45,7 @@ export default function App() {
   return (
     <AuthProvider isAuthenticated={isAuthenticated} onSignOut={handleSignOut}>
       <MobileContainer>
-        {currentPage === "landing" && <LandingPage onAuthRequest={handleAuthRequest} />}
+        {currentPage === "landing" && <LandingPage onAuthRequest={handleAuthRequest} onDemoMode={handleDemoMode} />}
         {currentPage === "auth" && <AuthPage onAuthSuccess={handleAuthSuccess} onBack={handleAuthBack} />}
         {currentPage === "home" && <HomePage onAuthClick={handleAuthRequest} />}
         {showOnboarding && <OnboardingTour onComplete={handleOnboardingComplete} />}
